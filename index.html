@@ -13,13 +13,10 @@
 <header id="home" class="header">
   <nav class="nav" role="navigation">
     <div class="container nav-elements">
+      <!-- Here is the logo-->
       <div class="branding">
         <a href="#home"><img src="images/hpluslogo.svg" alt="Logo - H Plus Sports"></a>
-<script>
-jQuery('[src="images/hpluslogo.svg"]').fadeTo(1000,0.1);
-jQuery('[src="images/hpluslogo.svg"]').fadeTo(1000,1.0);
-
-</script>
+  
       </div><!-- branding -->
       <ul class="navbar">
         <li><a href="#home">home</a></li>ß
@@ -222,8 +219,10 @@ jQuery('[src="images/hpluslogo.svg"]').fadeTo(1000,1.0);
   </nav>
   <p class="legal">H+ Sport is a fictitious brand created by lynda.com solely for the purpose of training. All products and people associated with H+ Sport are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Information provided about the product is also fictitious and should not be construed to be representative of actual products on the market in a similar product category.</p>
 </div><!-- container -->
+
 </footer><!-- footer -->
 
+<!-- Here is the Button that allows me to scroll up top to the page. -->
   <a id="button"></a>
     <script>
       jQuery(document).ready(function() {
@@ -236,20 +235,74 @@ jQuery('[src="images/hpluslogo.svg"]').fadeTo(1000,1.0);
       
       });
       </script>
+<!-- blink-->
+
+<script>  
+  function blinklogo(){
+    jQuery('[src="images/hpluslogo.svg"]').fadeTo(1000, 0.1).fadeTo(1000, 1.0, blinklogo);
+  }
+  blinklogo();
+
+</script>
+
+
+<!-- print button function-->
+
    <script>
     jQuery('a.printPage').click(function(){
          window.print();
          return false;
 });
     </script>
+
+<!-- Jquery that overrides css.-->
+
 <script>
   jQuery('[data-type="mineralwater"]').css("background-color", "green");
   jQuery('[data-type="proteinbar"]').css("background-color", "blue");
   </script>
-
+<!-- This was cheating, because i created the span elements myself. Hmoang's result was creating an element inside the first word (creating the limitn by stopping lenght at first space.-->
 <script>
   jQuery("span.first-element").css("font-weight", "bold"); 
   </script>
+<!-- The solution to this task was utilising michael lewiston's name, because that was the only unique thing aboutn his profile.-->
+  <script>
+jQuery(".person-card:contains(Michael Lewiston)").prependTo(".people-cards");
+</script>
+<!-- override the text.-->
+<script>
+jQuery(".navbar li a:contains(people)").text("Personnel");
+jQuery("#people .headline").text("Personnel");
+</script>
 
+<!-- weather button -->
+<a id="weather-button">
+  <div id="Helsinki-location"></div>
+  <h2 id="weather-text"></h2>
+  <div id="weather-description"></div>
+</a>
+
+<script>
+  function WeatherButton( cityID ) {
+var key = "{29cbdccf4b20aceaf07fc624ef29db49}";
+fetch("http://api.openweathermap.org/data/2.5/weather?id=658226&units=metric&APPID=29cbdccf4b20aceaf07fc624ef29db49")
+.then(function(resp) { return resp.json() })
+.then(function(data) {
+  drawWeather(data);
+})
+.catch(function() {
+});
+  }
+window.onload = function() {
+ WeatherButton( 658226 );
+}
+</script>
+<script>
+function drawWeather( d ) {
+  document.getElementById('Helsinki-location').innerHTML = d.name;
+	document.getElementById('weather-text').innerHTML =d.main.temp;
+  document.getElementById('weather-description').innerHTML =d.main.feels_like;
+}
+</script>
 </body>
 </html>
