@@ -238,54 +238,32 @@
       document.getElementById("popup1").style.visibility = "hidden";
     });
 
-  /* Hoan's answer to #3 WIP
+  /*  Task #4 -  Submit button. */
 
-document.getElementById("subscribe_popup").getElementsbyClassName('button')[0].addEventlistener("click",function(event) {
-  var userInput = "email";
-  var validationResult = true;
+  document
+    .getElementById("subscribe_popup")
+    .getElementsbyClassName("button")[0]
+    .addEventlistener("click", function() {
+      var userInput = "email";
+      var validationResult = true;
 
-  if(validationResult === true) {
-    document.getElement
-  }
-}
-*/
+      function validationResult(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+      }
 
-  /* validate email  */
+      if (validationResult === true) {
+        document.getElementById("popup1").style.visibility = "hidden";
+        document.getElementById("popup2").style.visibility = "visible";
+      }
+    });
 
-  function validateEmail() {
-    var _email = getEmail();
-
-    if (checkSpace(_email) === true) {
-      return false;
-    }
-
-    // check for @
-    var atSymbol = _email.indexOf("@");
-    if (atSymbol < 1) {
-      return false;
-    }
-
-    // check if there is a dot located less than 2 symbols away from the @ sign
-    var dot = _email.indexOf(".");
-    if (dot <= atSymbol + 2) {
-      return false;
-    }
-
-    // check that the dot is not at the end
-    if (dot === _email.length - 1) {
-      return false;
-    }
-
-    return true;
-  }
-
-  function getEmail() {
-    if (typeof $('[name="email"]').val() === "undefined") {
-      return "";
-    } else {
-      return '[name="email"]'.val();
-    }
-  }
+  /* #Task 4 validate email 
+  validationresult function
+  click on submit button.
+  fire validation result.
+  validation result needs a function.
+  */
 
   /* Jquery stuff */
 })(jQuery);
