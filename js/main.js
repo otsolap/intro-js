@@ -232,6 +232,7 @@
   /* You can close the subscribe box if popup1 by referring to the close class. (everything else is blanked out by popup1 so its ok to callout by classname .close.) */
 
   document.getElementById("popup1").getElementsByClassName;
+
   /* Hoan's answer to #3 WIP
 
 document.getElementById("subscribe_popup").getEelementsbyClassName('button')[0].addEventlistener("click",function(event) {
