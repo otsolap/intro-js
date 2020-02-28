@@ -249,7 +249,6 @@ document.getElementById("subscribe_popup").getEelementsbyClassName('button')[0].
   function validateEmail() {
     var _email = getEmail();
 
-  }
     if (checkSpace(_email) === true) {
       return false;
     }
