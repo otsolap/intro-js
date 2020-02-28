@@ -231,11 +231,7 @@
 
   /* You can close the subscribe box if popup1 by referring to the close class. (everything else is blanked out by popup1 so its ok to callout by classname .close.) */
 
-  document.addEventListener("click", function(event) {
-    document.getElementsByClassName(".close")[0];
-    document.getElementById("popup1").style.visibility = "hidden";
-  });
-
+  document.getElementById("popup1").getElementsByClassName;
   /* Hoan's answer to #3 WIP
 
 document.getElementById("subscribe_popup").getEelementsbyClassName('button')[0].addEventlistener("click",function(event) {
@@ -248,41 +244,43 @@ document.getElementById("subscribe_popup").getEelementsbyClassName('button')[0].
 }
 */
 
-  /* validate email 
-  
-  VALIDATE EMAIL
+  /* validate email  */
 
-function validateEmail() {
-  var _email = getEmail();
+  function validateEmail() {
+    var _email = getEmail();
 
-  if (checkSpace(_email) === true) {
-    return false;
+  }
+    if (checkSpace(_email) === true) {
+      return false;
+    }
+
+    // check for @
+    var atSymbol = _email.indexOf("@");
+    if (atSymbol < 1) {
+      return false;
+    }
+
+    // check if there is a dot located less than 2 symbols away from the @ sign
+    var dot = _email.indexOf(".");
+    if (dot <= atSymbol + 2) {
+      return false;
+    }
+
+    // check that the dot is not at the end
+    if (dot === _email.length - 1) {
+      return false;
+    }
+
+    return true;
   }
 
-  // check for @
-  var atSymbol = _email.indexOf("@");
-  if (atSymbol < 1) {
-    return false;
+  function getEmail() {
+    if (typeof $('[name="email"]').val() === "undefined") {
+      return "";
+    } else {
+      return '[name="email"]'.val();
+    }
   }
-
-  // check if there is a dot located less than 2 symbols away from the @ sign
-  var dot = _email.indexOf(".");
-  if (dot <= atSymbol + 2) {
-    return false;
-  }
-
-  // check that the dot is not at the end
-  if (dot === _email.length - 1) {
-    return false;
-  }
-
-  return true;
-
-
-  
-  
-  
-  */
 
   /* Jquery stuff */
 })(jQuery);
