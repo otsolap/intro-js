@@ -223,19 +223,24 @@
 
   /* tasks */
 
-  /* Mouse pops up pop1 */
+  /* Mouseleave from browser pops up pop1 */
 
   document.addEventListener("mouseleave", function(event) {
     document.getElementById("popup1").style.visibility = "visible";
   });
 
-  /* You can close the subscribe box if popup1 by referring to the close class. (everything else is blanked out by popup1 so its ok to callout by classname .close.) */
+  /* Clicking on X closes the popup. The reason we need to specify its popup1's close class is that otherwise you could just close it by default by clicking on any class listed as .close */
 
-  document.getElementById("popup1").getElementsByClassName;
+  document
+    .getElementById("popup1")
+    .getElementsByClassName("close")[0]
+    .addEventListener("click", function() {
+      document.getElementById("popup1").style.visibility = "hidden";
+    });
 
   /* Hoan's answer to #3 WIP
 
-document.getElementById("subscribe_popup").getEelementsbyClassName('button')[0].addEventlistener("click",function(event) {
+document.getElementById("subscribe_popup").getElementsbyClassName('button')[0].addEventlistener("click",function(event) {
   var userInput = "email";
   var validationResult = true;
 
