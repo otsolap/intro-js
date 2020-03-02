@@ -247,23 +247,11 @@
       var userInput = "email";
       var validationResult = true;
 
-      function validationResult(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-      }
-
       if (validationResult === true) {
         document.getElementById("popup1").style.visibility = "hidden";
         document.getElementById("popup2").style.visibility = "visible";
       }
     });
-
-  /* #Task 4 validate email 
-  validationresult function
-  click on submit button.
-  fire validation result.
-  validation result needs a function.
-  */
 
   /* Jquery stuff */
 })(jQuery);
