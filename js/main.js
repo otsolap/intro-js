@@ -185,6 +185,52 @@
     }
   });
 
+  /* tasks */
+
+  /* Mouseleave from browser pops up pop1 */
+
+  document.addEventListener("mouseleave", function(event) {
+    document.getElementById("popup1").style.visibility = "visible";
+  });
+
+  /* Clicking on X closes the popup. The reason we need to specify its popup1's close class is that otherwise you could just close it by default by clicking on any class listed as .close */
+
+  document
+    .getElementById("popup1")
+    .getElementsByClassName("close")[0]
+    .addEventListener("click", function() {
+      document.getElementById("popup1").style.visibility = "hidden";
+    });
+
+  /*  Task #4 -  Submit button and email validation */
+
+  $("#subscribe_popup .button").on("click", function() {
+    var _inputValue = $('[name="subscribe_pemail"]').val();
+    var _isValidEmail = validateEmail(_inputValue); // Checks if the email is valid.
+
+    if (_isValidEmail === true) {
+      $("#popup1").css("visibility", "hidden");
+      $("#popup2").css("visibility", "visible");
+    }
+  });
+  // Please notice that the above code is in a single syntax, the subscribe-pop button click checks the text inside subscribeemaiL, signals validateEmail function and then returns with the result.
+
+  function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  /* Popup 2 window closes when x is clicked */
+
+  document
+    .getElementById("popup2")
+    .getElementsByClassName("close")[0]
+    .addEventListener("click", function() {
+      document.getElementById("popup2").style.visibility = "hidden";
+    });
+
+  /* random function */
+
   var contentWayPoint = function() {
     var i = 0;
     $(".element-animate").waypoint(
@@ -220,38 +266,4 @@
     );
   };
   contentWayPoint();
-
-  /* tasks */
-
-  /* Mouseleave from browser pops up pop1 */
-
-  document.addEventListener("mouseleave", function(event) {
-    document.getElementById("popup1").style.visibility = "visible";
-  });
-
-  /* Clicking on X closes the popup. The reason we need to specify its popup1's close class is that otherwise you could just close it by default by clicking on any class listed as .close */
-
-  document
-    .getElementById("popup1")
-    .getElementsByClassName("close")[0]
-    .addEventListener("click", function() {
-      document.getElementById("popup1").style.visibility = "hidden";
-    });
-
-  /*  Task #4 -  Submit button. */
-
-  document
-    .getElementById("subscribe_popup")
-    .getElementsbyClassName("button")[0]
-    .addEventlistener("click", function() {
-      var userInput = "email";
-      var validationResult = true;
-
-      if (validationResult === true) {
-        document.getElementById("popup1").style.visibility = "hidden";
-        document.getElementById("popup2").style.visibility = "visible";
-      }
-    });
-
-  /* Jquery stuff */
 })(jQuery);
